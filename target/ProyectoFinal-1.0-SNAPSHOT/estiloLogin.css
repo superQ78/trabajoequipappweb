@@ -1,0 +1,127 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 11 may 2025, 14:45:56
+    Author     : equipo
+*/
+/* Fondo y pantalla */
+body.bg-light {
+    background-color: #f7f9fc;
+    font-family: 'Arial', sans-serif;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 100%;
+}
+
+/* Estilo de la tarjeta de login */
+.card {
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.8s ease-out;
+}
+
+/* Animación para la tarjeta */
+@keyframes slideIn {
+    0% { opacity: 0; transform: translateY(-50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Encabezado de la tarjeta */
+.card-header {
+    background-color: #ff4d4d;
+    color: #fff;
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
+    text-align: center;
+}
+
+.card-header h4 {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Cuerpo de la tarjeta */
+.card-body {
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 0 0 20px 20px;
+}
+
+/* Campos de entrada */
+.form-control {
+    height: 50px;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #ff4d4d;
+    box-shadow: 0 0 15px rgba(255, 77, 77, 0.3);
+}
+
+/* Efecto de enfoque en el campo */
+.form-control:focus {
+    border-color: #ff4d4d;
+    outline: none;
+}
+
+/* Botón de entrar */
+.btn-primary {
+    background-color: #ff4d4d;
+    border-color: #ff4d4d;
+    font-size: 18px;
+    padding: 15px 20px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #e60000;
+    border-color: #e60000;
+    transform: scale(1.05);
+}
+
+/* Mensaje de error */
+.alert-danger {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Enlace de registro */
+.text-center a {
+    text-decoration: none;
+    color: #ff4d4d;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.text-center a:hover {
+    color: #e60000;
+}
+
+/* Animación de aparición */
+.card {
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}

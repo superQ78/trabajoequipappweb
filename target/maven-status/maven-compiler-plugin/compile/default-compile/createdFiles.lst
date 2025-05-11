@@ -1,0 +1,17 @@
+Control\AgregarFavoritosServlet.class
+DTO\PeliculaDTO.class
+DTO\UsuarioDTO.class
+Negocio\UsuarioBO.class
+Control\BuscarPeliculasServlet.class
+DAO\PeliculaDAO.class
+Negocio\PeliculaBO.class
+com\mycompany\proyectofinal\resources\JakartaEE8Resource.class
+Control\FavoritosServlet.class
+Control\MarcarFavoritaServlet.class
+DAO\UsuariosDAO.class
+Control\UsuarioServlet.class
+Control\VerPeliculasServlet.class
+Control\InicioPeliculaServlet.class
+Control\RegistrarPeliculaServlet.class
+com\mycompany\proyectofinal\JakartaRestConfiguration.class
+Control\LoginServlet.class
