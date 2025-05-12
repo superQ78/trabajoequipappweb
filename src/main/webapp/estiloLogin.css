@@ -14,6 +14,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 body.bg-light {
     font-family: 'Arial', sans-serif;
     animation: fadeIn 1s ease-out;
+    background: #031639;
     background-image: url('Images/collage 1.jpg'); /* Reemplaza con la ruta correcta a tu imagen */
     background-size: cover; /* Cubre todo el fondo */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
@@ -40,18 +41,20 @@ body.bg-light {
 /* Contenedor principal (para la tarjeta de login) */
 .login-container {
     width: 100%;
-    max-width: 400px; /* Ancho máximo deseado para el formulario */
+    max-width: 450px; /* Ancho máximo deseado para el formulario */
     padding: 20px; /* Espacio alrededor del formulario */
     z-index: 1; /* Asegura que el formulario esté encima del fondo */
 }
 
 /* Estilo de la tarjeta de login */
 .card {
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Aumenté un poco la sombra para que destaque sobre el fondo */
+    border-radius: 20px; /* Bordes un poco menos redondeados que el ejemplo */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* Sombra similar al header y cards */
     animation: slideIn 0.8s ease-out;
-    width: 100%; /* La tarjeta ocupa el ancho del contenedor login-container */
-    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con un poco de transparencia para que se vea el fondo */
+    width: 100%;
+    background-color: #031d4b; /* Fondo similar a la navegación */
+    color: #e0e0e0; /* Texto claro */
+     min-height: 400px;
 }
 
 /* Animación para la tarjeta */
@@ -68,11 +71,12 @@ body.bg-light {
 
 /* Encabezado de la tarjeta */
 .card-header {
-    background-color: #ff4d4d;
-    color: #fff;
-    border-radius: 20px 20px 0 0;
+    background:linear-gradient(90deg, #3F006B, #7C0054); /* Morado oscuro del header */
+    color: #ffffff;
+    border-radius: 10px 15px 0 0;
     padding: 20px;
     text-align: center;
+    border-bottom: 1px solid #58053d; /* Línea divisoria sutil */
 }
 
 .card-header h4 {
@@ -84,41 +88,46 @@ body.bg-light {
 /* Cuerpo de la tarjeta */
 .card-body {
     padding: 30px;
-    background-color: transparent; /* Fondo transparente para que se vea el fondo del body */
-    border-radius: 0 0 20px 20px;
+    background-color: transparent;
+    border-radius: 0 0 15px 15px;
 }
 
 /* Campos de entrada */
 .form-control {
-    height: 50px;
-    border-radius: 10px;
+    height: 55px;
+    border-radius: 8px;
     font-size: 16px;
-    padding: 12px 15px;
+    padding: 10px 15px;
     margin-bottom: 20px;
-    border: 1px solid #ddd;
-    transition: all 0.3s ease;
+    border: 1px solid #555;
+    background-color: #031639; /* Fondo oscuro para los inputs */
+    color: #e0e0e0;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 90%;
 }
 
 .form-control:focus {
-    border-color: #ff4d4d;
-    box-shadow: 0 0 15px rgba(255, 77, 77, 0.3);
+    border-color: #3F006B; /* Color акцент al enfocar */
+    box-shadow: 0 0 8px rgb(88, 5, 61);
     outline: none;
 }
 
 /* Botón de entrar */
 .btn-primary {
-    background-color: #ff4d4d;
-    border-color: #ff4d4d;
+    background-color: #7C0054; /* Rosa oscuro del header */
+    border-color: #7C0054;
     font-size: 18px;
-    padding: 15px 20px;
+    padding: 12px 20px;
     border-radius: 30px;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
     width: 100%;
+    color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .btn-primary:hover {
-    background-color: #e60000;
-    border-color: #e60000;
+    background-color: #58053d;
+    border-color: #3F006B;
     transform: scale(1.05);
 }
 
@@ -136,13 +145,13 @@ body.bg-light {
 /* Enlace de registro */
 .text-center a {
     text-decoration: none;
-    color: #ff4d4d;
+    color: #7C0054;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .text-center a:hover {
-    color: #e60000;
+    color: #3F006B;
 }
 
 /* Ocultamos las imágenes flotantes anteriores */
