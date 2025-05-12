@@ -76,11 +76,11 @@ h1 {
 
 .pelicula img {
     max-width: 100%;
-    height: auto;
-    border-radius: 5px;
+    height: 175px; /* 📌 Reducimos la altura a la mitad */
+    object-fit: cover; /* 🔹 Mantiene la proporción sin distorsionar */
+    border-radius: 8px;
     margin-bottom: 10px;
 }
-
 .pelicula p {
     color: #555;
     margin-bottom: 8px;
