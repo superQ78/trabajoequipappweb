@@ -41,7 +41,7 @@
                         Mis Películas</a>
                     <div class="dropdown-menu">
                         <a href="VerPeliculasServlet">Ver Todas</a>
-                        <a href="Favoritos.jsp">Favoritas</a>
+                        <a href="FavoritosServlet">Favoritas</a>
                    
                     </div>
                 </li>
