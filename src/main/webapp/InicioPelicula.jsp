@@ -13,51 +13,50 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bienvenido al Cine</title>
-        <!-- Usar un nuevo estilo moderno -->
+        <title>Filmoteca</title>
         <link rel="stylesheet" href="estiloInicioPelicula.css">
-        <!-- Opcional: Incluir alguna fuente moderna desde Google Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     </head>
     <body>
         <header class="header">
             <h1>Bienvenido, <%= nombreUsuario%>!</h1>
         </header>
-        <div class="search-bar-container">
-            <form action="BuscarPeliculasServlet" method="get" class="search-form">
-                <input type="text" name="titulo" placeholder="Buscar películas..." required>
-                <button type="submit"><i class="fas fa-search"></i></button>
-            </form>
-        </div>
+
         <nav class="nav-bar">
             <ul>
                 <li>
                     <a class="nav-link" href="ResgitrarPelicula.jsp">
-                        <span class="icon"></span> Registrar Película
+                        Registrar Película
                     </a>
                 </li>
-                <li class="dropdown">
-                    <a class="nav-link dropdown-toggle" href="#">
-                        Mis Películas</a>
-                    <div class="dropdown-menu">
-                        <a href="VerPeliculasServlet">Ver Todas</a>
-                        <a href="Favoritos.jsp">Favoritas</a>
-                   
-                    </div>
+                <li>
+                    <a class="nav-link" href="VerPeliculasServlet">
+                        Mis Películas
+                    </a>
                 </li>
-                <li class="dropdown">
-                    <a class="nav-link dropdown-toggle" href="#">
-                        Cuenta</a>
-                    <div class="dropdown-menu">
-                        <a href="logout.jsp">Cerrar Sesión</a>
-                    </div>
+                <li>
+                    <a class="nav-link" href="Favoritos.jsp">
+                        Favoritas
+                    </a>
+                </li>
+                <li style="margin-left: auto;">
+                    <a class="nav-link" href="logout.jsp">
+                        Cerrar Sesión
+                    </a>
                 </li>
             </ul>
         </nav>
 
-        <!-- Aquí podrías incluir una sección de tarjetas o galería de películas -->
+        <div class="search-bar-container">
+            <form action="BuscarPeliculasServlet" method="get" class="search-form">
+                <input type="text" name="titulo" id="searchInput" placeholder="Buscar películas..." required onkeyup="buscarPeliculas()">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+            <div id="suggestions-container">
+            </div>
+        </div>
+
         <main class="content">
-            <!-- Ejemplo: Tarjeta de película (futura implementación) -->
+            <!-- Ejemplo: Tarjeta de película -->
             <section class="pelicula-card">
                 <img src="ruta_a_imagen.jpg" alt="Portada de la película">
                 <div class="detalles">
@@ -66,5 +65,42 @@
                 </div>
             </section>
         </main>
+
+        <script>
+            /* Al buscar las películas, deben de ir apareciendo */
+            function buscarPeliculas() {
+                const input = document.getElementById('searchInput').value;
+                const suggestionsContainer = document.getElementById('suggestions-container');
+
+                suggestionsContainer.innerHTML = ''; // Limpiar sugerencias anteriores
+
+                if (input.length >= 2) {
+                    fetch('BuscarPeliculasSugerenciasServlet?term=' + input)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data && data.length > 0) {
+                                    data.forEach(pelicula => {
+                                        const suggestion = document.createElement('div');
+                                        suggestion.classList.add('suggestion-item');
+                                        suggestion.textContent = pelicula.getTitulo();
+                                        suggestion.addEventListener('click', function () {
+                                            document.getElementById('searchInput').value = pelicula.getTitulo();
+                                            suggestionsContainer.innerHTML = '';
+                                        });
+                                        suggestionsContainer.appendChild(suggestion);
+                                    });
+                                } else {
+                                    const noSuggestions = document.createElement('div');
+                                    noSuggestions.classList.add('no-suggestions');
+                                    noSuggestions.textContent = 'No se encontraron sugerencias.';
+                                    suggestionsContainer.appendChild(noSuggestions);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error al buscar sugerencias:', error);
+                            });
+                }
+            }
+        </script>
     </body>
 </html>

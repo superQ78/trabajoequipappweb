@@ -7,6 +7,7 @@ DAO\PeliculaDAO.class
 Control\EliminarPeliculaServlet.class
 Negocio\PeliculaBO.class
 com\mycompany\proyectofinal\resources\JakartaEE8Resource.class
+Control\BuscarPeliculasSugerenciasServlet.class
 Control\FavoritosServlet.class
 Control\MarcarFavoritaServlet.class
 DAO\UsuariosDAO.class

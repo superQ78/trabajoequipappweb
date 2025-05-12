@@ -8,10 +8,6 @@ import DAO.PeliculaDAO;
 import DTO.PeliculaDTO;
 import java.util.List;
 
-/**
- *
- * @author cesar
- */
 public class PeliculaBO {
 
     private PeliculaDAO peliculaDAO;
