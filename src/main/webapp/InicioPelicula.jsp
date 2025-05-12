@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" href="Favoritos.jsp">
+                    <a class="nav-link" href="FavoritosServlet">
                         Favoritas
                     </a>
                 </li>
