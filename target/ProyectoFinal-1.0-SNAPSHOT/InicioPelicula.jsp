@@ -39,9 +39,9 @@
                     </a>
                 </li>
                 <li style="margin-left: auto;">
-                    <a class="nav-link" href="logout.jsp">
-                        Cerrar Sesión
-                    </a>
+                    <a class="nav-link" href="LogoutServlet" onclick="return confirmarCierreSesion()">
+                    Cerrar Sesión
+                </a>
                 </li>
             </ul>
         </nav>
@@ -67,6 +67,11 @@
         </main>
 
         <script>
+            
+             function confirmarCierreSesion() {
+            return confirm('¿Estás seguro de que deseas cerrar sesión?');
+        }
+            
             /* Al buscar las películas, deben de ir apareciendo */
             function buscarPeliculas() {
                 const input = document.getElementById('searchInput').value;
