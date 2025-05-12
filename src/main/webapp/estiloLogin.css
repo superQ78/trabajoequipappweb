@@ -12,7 +12,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 /* Fondo con imagen */
 body.bg-light {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     animation: fadeIn 1s ease-out;
     background: #031639;
     background-image: url('Images/collage 1.jpg'); /* Reemplaza con la ruta correcta a tu imagen */
@@ -54,7 +54,7 @@ body.bg-light {
     width: 100%;
     background-color: #031639; /* Fondo similar a la navegación */
     color: #e0e0e0; /* Texto claro */
-     min-height: 400px;
+    min-height: 400px;
 }
 
 /* Animación para la tarjeta */
@@ -106,8 +106,8 @@ body.bg-light {
 }
 
 .form-control:focus {
-    border-color: #031639; 
-    box-shadow: 0 0 8px rgb(88, 5, 61);
+    border-color: #B81333; /* Cambia el color del borde al enfocar */
+    box-shadow: 0 0 8px rgb(170, 75, 94); /* Usa un color de sombra similar al del registro */
     outline: none;
 }
 
@@ -125,7 +125,7 @@ body.bg-light {
 }
 
 .btn-primary:hover {
-    background-color: #58053d;
+    background-color: #870d25;
     border-color: #031639;
     transform: scale(1.05);
 }
@@ -150,7 +150,7 @@ body.bg-light {
 }
 
 .text-center a:hover {
-    color: #031639;
+    color:  #870d25;
 }
 
 /* Ocultamos las imágenes flotantes anteriores */
