@@ -3,43 +3,75 @@
     Created on : 11 may 2025, 15:25:47
     Author     : equipo
 */
+/* Estilos generales del body (cuerpo de la página) */
 body {
-    background-color: #031639;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
+    background-color: #ffffff; /* Fondo oscuro, consistente con el login */
+    font-family: 'Poppins', sans-serif; /* Usando la misma fuente que otras páginas */
+    color: #e0e0e0; /* Texto claro para mejor contraste en el fondo oscuro */
     margin: 0;
-    padding: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
+    min-height: 100vh;
 }
 
 .container {
     max-width: 1200px;
-    margin: auto;
+    width: 100%;
+    padding: 20px;
 }
 
 h1 {
-    font-size: 2.2rem;
-    color: #1f2937;
-    border-bottom: 3px solid #3b82f6;
+    font-size: 2.5rem;
+    color: #bb86fc; /* Color акцент */
+    border-bottom: 2px solid #bb86fc;
     padding-bottom: 10px;
     margin-bottom: 30px;
+    text-align: center;
 }
 
+.header-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.btn-outline-light {
+    background-color: transparent;
+    color: #bb86fc;
+    border: 1px solid #bb86fc;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-outline-light:hover {
+    background-color: #bb86fc;
+    color: #031639;
+}
+
+/* Card (tarjeta) para formularios y tablas */
 .card {
     border: none;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #031d4b; /* Fondo oscuro para la tarjeta */
+    color: #e0e0e0;
     margin-bottom: 2rem;
+    overflow: hidden; /* Para contener las esquinas redondeadas del header */
 }
 
 .card-header {
-    background-color: #3b82f6;
+    background: linear-gradient(0deg, #3F006B, #7C0054); /* Gradiente del color акцент */
     color: white;
     font-weight: bold;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    padding: 1rem;
-    font-size: 1.2rem;
+    padding: 1.2rem;
+    font-size: 1.3rem;
+    text-align: center;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
 .card-body {
@@ -47,102 +79,141 @@ h1 {
 }
 
 .form-label {
-    font-weight: 600;
-    color: #374151;
+    font-weight: bold;
+    color: #bb86fc;
+    margin-bottom: 0.5rem;
+    display: block;
 }
 
 .form-control {
     border-radius: 8px;
-    border: 1px solid #d1d5db;
-    transition: all 0.3s ease;
+    border: 1px solid #555;
+    background-color: #031639;
+    color: #e0e0e0;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    width: calc(100% - 1.6rem); /* Ajuste para el padding */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-control:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+    border-color: #bb86fc;
+    box-shadow: 0 0 8px rgba(187, 134, 252, 0.5);
+    outline: none;
 }
 
 .btn {
     border-radius: 8px;
-    padding: 0.5rem 1rem;
-    font-weight: 600;
-    transition: all 0.2s ease-in-out;
+    padding: 0.7rem 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease-in-out;
+    border: none;
 }
 
 .btn-primary {
-    background-color: #3b82f6;
-    border: none;
+    background-color: #7C0054; /* Color акцент */
+    color: white;
 }
 
 .btn-primary:hover {
-    background-color: #2563eb;
+    background-color: #58053d;
+    transform: scale(1.05);
 }
 
 .btn-secondary {
-    background-color: #6b7280;
-    border: none;
+    background-color: #333;
+    color: #e0e0e0;
 }
 
 .btn-secondary:hover {
-    background-color: #4b5563;
+    background-color: #555;
+    transform: scale(1.05);
 }
 
 .btn-warning {
     background-color: #f59e0b;
-    border: none;
-    color: #fff;
+    color: #222;
 }
 
 .btn-warning:hover {
     background-color: #d97706;
+    transform: scale(1.05);
 }
 
 .btn-danger {
     background-color: #ef4444;
-    border: none;
     color: white;
 }
 
 .btn-danger:hover {
     background-color: #dc2626;
+    transform: scale(1.05);
 }
 
 .table {
-    border-radius: 12px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    border-radius: 10px;
     overflow: hidden;
+    background-color: #031639; /* Fondo oscuro para la tabla */
+    color: #e0e0e0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .table th, .table td {
-    vertical-align: middle;
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid #555;
+}
+
+.table th {
+    background-color: #333;
+    font-weight: bold;
     text-align: center;
 }
 
-.table thead {
-    background-color: #1f2937;
-    color: white;
+.table td {
+    text-align: center;
 }
 
-.table-striped > tbody > tr:nth-of-type(odd) {
-    background-color: #f9fafb;
+.table tbody tr:nth-child(even) {
+    background-color: #031d4b; /* Fondo oscuro ligeramente más claro para las filas pares */
 }
 
-.d-flex.gap-2 > * {
+.d-flex.justify-content-center.gap-2 > * {
     margin-right: 0.5rem;
 }
-.btn-outline-light {
-    background-color: #007bff; /* azul Bootstrap */
-    color: #ffffff;
-    border: none;
-    padding: 0.4rem 1rem;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-    font-weight: 500;
-    text-decoration: none;
+
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .form-control {
+        width: calc(100% - 1rem);
+        padding: 0.6rem;
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+    }
+
+    .table th, .table td {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
 }
-
-.btn-outline-light:hover {
-    background-color: #0056b3; /* azul más oscuro al pasar el mouse */
-    color: #ffffff;
-}
-
-
