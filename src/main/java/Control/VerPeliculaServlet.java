@@ -8,15 +8,17 @@ package Control;
  *
  * @author cesar
  */
+import DAO.PeliculaDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
+import org.bson.types.ObjectId;
 import DTO.PeliculaDTO;
-import Modelo.PeliculaDAO; // Asegúrate de tener tu clase DAO para Películas
+import DAO.PeliculaDAO;
 
 @WebServlet("/VerPeliculaServlet")
 public class VerPeliculaServlet extends HttpServlet {
@@ -25,27 +27,35 @@ public class VerPeliculaServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idParam = request.getParameter("id");
+        HttpSession session = request.getSession(false);
+        String usuarioId = (session != null) ? (String) session.getAttribute("usuarioId") : null;
+
+        if (usuarioId == null || usuarioId.isEmpty()) {
+            // El usuario no está logueado, redirigir a la página de login
+            response.sendRedirect("login.jsp"); // Reemplaza "login.jsp" con tu página de inicio de sesión
+            return;
+        }
+
         if (idParam != null && !idParam.isEmpty()) {
             try {
-                int peliculaId = Integer.parseInt(idParam);
-                PeliculaDAO peliculaDAO = new PeliculaDAO(); // Instancia de tu DAO
-                PeliculaDTO pelicula = peliculaDAO.obtenerPeliculaPorId(peliculaId); // Método para buscar por ID
+                ObjectId peliculaId = new ObjectId(idParam);
+                PeliculaDTO pelicula = PeliculaDAO.obtenerPorId(peliculaId);
 
-                if (pelicula != null) {
+                if (pelicula != null && pelicula.getUsuarioId().equals(usuarioId)) {
                     request.setAttribute("pelicula", pelicula);
                     request.getRequestDispatcher("verPeliculaDetalle.jsp").forward(request, response);
                 } else {
-                    // Manejar el caso en que no se encuentra la película
-                    response.sendRedirect("paginaError.jsp?mensaje=Película no encontrada");
+                    // Manejar el caso en que no se encuentra la película o no pertenece al usuario
+                    response.sendRedirect("FavoritosServlet?mensajeError=Película no encontrada o no pertenece a tu lista");
                 }
 
-            } catch (NumberFormatException e) {
-                // Manejar el caso en que el ID no es un número válido
-                response.sendRedirect("paginaError.jsp?mensaje=ID de película inválido");
+            } catch (IllegalArgumentException e) {
+                // Manejar el caso en que el ID no es un ObjectId válido
+                response.sendRedirect("FavoritosServlet?mensajeError=ID de película inválido");
             }
         } else {
             // Manejar el caso en que no se proporciona el ID
-            response.sendRedirect("paginaError.jsp?mensaje=No se proporcionó el ID de la película");
+            response.sendRedirect("FavoritosServlet?mensajeError=No se proporcionó el ID de la película");
         }
     }
 

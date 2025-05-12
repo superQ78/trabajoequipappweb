@@ -32,6 +32,11 @@
             <button onclick="window.location.href = 'InicioPeliculaServlet'">Ir a Inicio</button>
         </div>
 
+        <% String mensajeError = request.getParameter("mensajeError");
+            if (mensajeError != null && !mensajeError.isEmpty()) {%>
+        <p class="mensaje-error"><%= mensajeError%></p>
+        <% } %>
+
         <div class="content">
             <% if (peliculasFavoritas != null && !peliculasFavoritas.isEmpty()) { %>
             <% for (PeliculaDTO pelicula : peliculasFavoritas) {%>
