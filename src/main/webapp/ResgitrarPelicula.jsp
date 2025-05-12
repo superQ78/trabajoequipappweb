@@ -14,7 +14,6 @@
     <meta charset="UTF-8">
     <title>Registrar Película</title>
     <link rel="stylesheet" href="estiloRegistrarPelicula.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body class="body-cine">
     <div class="registro-container">

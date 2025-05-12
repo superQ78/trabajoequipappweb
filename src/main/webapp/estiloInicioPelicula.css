@@ -5,8 +5,8 @@
 */
 /* Estilo global del body */
 body {
-    background: #031639 ;
-    font-family: sans-serif;
+    background: #031639;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
 }
