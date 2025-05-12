@@ -1,4 +1,3 @@
-
 package DAO;
 
 import DTO.UsuarioDTO;
@@ -142,9 +141,12 @@ public class UsuariosDAO {
         return null;
     }
 
-// Metodo para buscar un usuario por nombre de usuario
     public static UsuarioDTO buscarPorNombreUsuario(String nomUsuario, String contrasena) {
-        Document doc = usuarios.find(Filters.eq("nomUsuario", nomUsuario)).first();
+        Document doc = usuarios.find(Filters.and(
+                Filters.eq("nomUsuario", nomUsuario),
+                Filters.eq("contrasena", contrasena) // 🔹 Validamos la contraseña correctamente
+        )).first();
+
         if (doc != null) {
             return new UsuarioDTO(
                     doc.getObjectId("_id"),
