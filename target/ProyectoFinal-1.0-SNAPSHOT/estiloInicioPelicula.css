@@ -5,7 +5,7 @@
 */
 /* Estilo global del body */
 body {
-    background: #240B35 ;
+    background: #031639 ;
     font-family: sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
@@ -13,10 +13,10 @@ body {
 
 /* Header con gradiente y efecto luminoso */
 .header {
-    background: linear-gradient(90deg, #B81333, #240B35);
+    background: linear-gradient(0deg, #031639, #B81333);
     padding: 2rem 1rem;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+   
 }
 
 .header h1 {
@@ -27,19 +27,19 @@ body {
 
 @keyframes pulsate {
     0% {
-        text-shadow: 0 0 10px #3F006B;
+        text-shadow: 0 0 10px #031639;
     }
     50% {
-        text-shadow: 0 0 20px #7C0054;
+        text-shadow: 0 0 20px #B81333;
     }
     100% {
-        text-shadow: 0 0 10px #3F006B;
+        text-shadow: 0 0 10px #031639;
     }
 }
 
 /* Navegación principal */
 .nav-bar {
-    background-color: #240B35;
+    background-color: #031639;
     box-shadow: 0 2px 8px rgba(0,0,0,0.8);
 }
 .nav-bar ul {
@@ -198,7 +198,7 @@ body {
 }
 
 .search-form button {
-    background-color: #7C0054;
+    background-color: #B81333;
     border: none;
     color: white;
     padding: 0 20px;
@@ -209,7 +209,7 @@ body {
 }
 
 .search-form button:hover {
-    background-color: #58053d;
+    background-color: #870d25;
 }
 
 

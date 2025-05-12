@@ -14,7 +14,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 body.bg-light {
     font-family: 'Arial', sans-serif;
     animation: fadeIn 1s ease-out;
-    background: #240B35;
+    background: #031639;
     background-image: url('Images/collage 1.jpg'); /* Reemplaza con la ruta correcta a tu imagen */
     background-size: cover; /* Cubre todo el fondo */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
@@ -52,7 +52,7 @@ body.bg-light {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* Sombra similar al header y cards */
     animation: slideIn 0.8s ease-out;
     width: 100%;
-    background-color: #031d4b; /* Fondo similar a la navegación */
+    background-color: #031639; /* Fondo similar a la navegación */
     color: #e0e0e0; /* Texto claro */
      min-height: 400px;
 }
@@ -71,12 +71,11 @@ body.bg-light {
 
 /* Encabezado de la tarjeta */
 .card-header {
-    background:linear-gradient(90deg, #B81333, #240B35); /* Morado oscuro del header */
+    background:linear-gradient(0deg, #031639, #B81333); /* Morado oscuro del header */
     color: #ffffff;
     border-radius: 10px 15px 0 0;
     padding: 20px;
     text-align: center;
-    border-bottom: 1px solid #58053d; /* Línea divisoria sutil */
 }
 
 .card-header h4 {
@@ -100,14 +99,14 @@ body.bg-light {
     padding: 10px 15px;
     margin-bottom: 20px;
     border: 1px solid #555;
-    background-color: #240B35; /* Fondo oscuro para los inputs */
+    background-color: #031639; /* Fondo oscuro para los inputs */
     color: #e0e0e0;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     width: 90%;
 }
 
 .form-control:focus {
-    border-color: #240B35; 
+    border-color: #031639; 
     box-shadow: 0 0 8px rgb(88, 5, 61);
     outline: none;
 }
@@ -127,7 +126,7 @@ body.bg-light {
 
 .btn-primary:hover {
     background-color: #58053d;
-    border-color: #240B35;
+    border-color: #031639;
     transform: scale(1.05);
 }
 
@@ -145,13 +144,13 @@ body.bg-light {
 /* Enlace de registro */
 .text-center a {
     text-decoration: none;
-    color: #58053d;
+    color: #B81333;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .text-center a:hover {
-    color: #240B35;
+    color: #031639;
 }
 
 /* Ocultamos las imágenes flotantes anteriores */
