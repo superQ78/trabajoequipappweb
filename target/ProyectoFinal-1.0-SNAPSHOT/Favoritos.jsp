@@ -32,39 +32,35 @@
             <button onclick="window.location.href = 'InicioPeliculaServlet'">Ir a Inicio</button>
         </div>
 
-        <div class="peliculas-container">
+        <div class="content">
             <% if (peliculasFavoritas != null && !peliculasFavoritas.isEmpty()) { %>
             <% for (PeliculaDTO pelicula : peliculasFavoritas) {%>
-            <div class="pelicula">
-                <h2><%= pelicula.getTitulo()%></h2>
-                <p><%= pelicula.getDescripcion()%></p>
-                <p>🎭 Género: <%= pelicula.getGenero()%></p>
-                <p>⭐ Calificación: <%= pelicula.getCalificacion()%>/5</p>
-
+            <div class="pelicula-card" onclick="window.location.href = 'VerPeliculaServlet?id=<%= pelicula.getId()%>'">
                 <%
                     String imagenUrl = pelicula.getImagen();
                     if (imagenUrl != null && !imagenUrl.isEmpty()) {
-                        // 🔹 Verificamos si ya incluye "uploads/"
                         if (!imagenUrl.startsWith("uploads/")) {
                             imagenUrl = "uploads/" + imagenUrl;
                         }
                     } else {
-                        imagenUrl = "images/default.jpg"; // Imagen por defecto si no hay portada
+                        imagenUrl = "images/default.jpg"; // Imagen por defecto
                     }
                 %>
-
-                <img src="<%= imagenUrl%>" alt="Portada de <%= pelicula.getTitulo()%>" class="portada-img">
-
-                <p>📝 Comentario: <%= pelicula.getComentario()%></p>
-
-                <!-- 🔹 Botón de estrella para quitar de favoritos -->
+                <img src="<%= imagenUrl%>" alt="Portada de <%= pelicula.getTitulo()%>">
+                <div class="info-pelicula">
+                    <h2><%= pelicula.getTitulo()%></h2>
+                    <p><%= pelicula.getDescripcion().substring(0, Math.min(pelicula.getDescripcion().length(), 100))%>...</p>
+                    <p>🎭 Género: <%= pelicula.getGenero()%></p>
+                    <p>⭐ Calificación: <%= pelicula.getCalificacion()%>/5</p>
+                    <p>📝 Comentario: <%= pelicula.getComentario()%></p>
+                </div>
                 <button class="btn-favorito" onclick="toggleFavorito('<%= pelicula.getId()%>', this)">
-                    <i class="fas fa-star"></i> <!-- Siempre iniciará como favorita en esta página -->
+                    <i class="fas fa-star"></i>
                 </button>
             </div>
             <% } %>
             <% } else { %>
-            <p>No tienes películas favoritas guardadas.</p>
+            <p class="no-resultados">No tienes películas favoritas guardadas.</p>
             <% }%>
         </div>
     </body>
