@@ -4,6 +4,7 @@ DTO\UsuarioDTO.class
 Negocio\UsuarioBO.class
 Control\BuscarPeliculasServlet.class
 DAO\PeliculaDAO.class
+Control\EliminarPeliculaServlet.class
 Negocio\PeliculaBO.class
 com\mycompany\proyectofinal\resources\JakartaEE8Resource.class
 Control\FavoritosServlet.class

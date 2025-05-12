@@ -23,6 +23,7 @@
         <h2><%= p.getTitulo() %></h2>
         <p>Imagen <%= p.getImagen()%></p>
         <p>Descripcion <%= p.getDescripcion()%></p>
+        <p>Genero <%= p.getGenero()%></p>
     </div>
 <%
         }

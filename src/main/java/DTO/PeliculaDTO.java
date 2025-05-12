@@ -20,11 +20,12 @@ public class PeliculaDTO {
     private boolean favorita;
     private String imagen; // ruta a la imagen
     private String comentario;
+    private String genero;
 
     public PeliculaDTO() {
     }
 
-    public PeliculaDTO(ObjectId id, String usuarioId, String titulo, String descripcion, int calificacion, boolean favorita, String imagen, String comentario) {
+    public PeliculaDTO(ObjectId id, String usuarioId, String titulo, String descripcion, int calificacion, boolean favorita, String imagen, String comentario, String genero) {
         this.id = id;
         this.usuarioId = usuarioId;
         this.titulo = titulo;
@@ -33,6 +34,7 @@ public class PeliculaDTO {
         this.favorita = favorita;
         this.imagen = imagen;
         this.comentario = comentario;
+        this.genero= genero;
     }
 
     public ObjectId getId() {
@@ -98,5 +100,15 @@ public class PeliculaDTO {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+    
+    
 
 }

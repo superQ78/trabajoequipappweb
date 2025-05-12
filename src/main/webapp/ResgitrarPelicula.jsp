@@ -47,6 +47,10 @@
                     <label for="comentario">💬 Comentario:</label>
                     <textarea name="comentario" rows="2"></textarea>
                 </div>
+                <div class="form-group">
+                    <label for="genero">Genero:</label>
+                    <textarea name="genero" rows="2"></textarea>
+                </div>
 
                 <div class="form-group">
                     <label for="imagen">🖼️ Imagen de portada:</label>

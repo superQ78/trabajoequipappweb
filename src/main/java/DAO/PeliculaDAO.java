@@ -38,7 +38,8 @@ public class PeliculaDAO {
                 .append("calificacion", pelicula.getCalificacion())
                 .append("favorita", pelicula.isFavorita())
                 .append("imagen", pelicula.getImagen())
-                .append("comentario", pelicula.getComentario());
+                .append("comentario", pelicula.getComentario())
+                .append("genero", pelicula.getGenero());
 
         peliculas.insertOne(doc);
     }
@@ -68,7 +69,8 @@ public class PeliculaDAO {
                     doc.getInteger("calificacion"),
                     doc.getBoolean("favorita"),
                     doc.getString("imagen"),
-                    doc.getString("comentario")
+                    doc.getString("comentario"),
+                    doc.getString("genero")
             ));
         }
 
@@ -98,7 +100,8 @@ public class PeliculaDAO {
                     doc.getInteger("calificacion"),
                     doc.getBoolean("favorita"),
                     doc.getString("imagen"),
-                    doc.getString("comentario")
+                    doc.getString("comentario"),
+                    doc.getString("genero")
             ));
         }
 
@@ -115,7 +118,8 @@ public class PeliculaDAO {
                 .append("descripcion", pelicula.getDescripcion())
                 .append("calificacion", pelicula.getCalificacion())
                 .append("favorita", pelicula.isFavorita())
-                .append("imagen", pelicula.getImagen());
+                .append("imagen", pelicula.getImagen())
+                .append("genero", pelicula.getGenero());
         peliculas.updateOne(eq("_id", pelicula.getId()), new Document("$set", doc));
     }
 
@@ -130,7 +134,8 @@ public class PeliculaDAO {
                     doc.getInteger("calificacion"),
                     doc.getBoolean("favorita"),
                     doc.getString("imagen"),
-                    doc.getString("comentario")
+                    doc.getString("comentario"),
+                    doc.getString("genero")
             );
         }
         return null;
@@ -147,7 +152,7 @@ public class PeliculaDAO {
         MongoCursor<Document> cursor = peliculas.find(
                 Filters.and(
                         Filters.eq("usuarioId", usuarioId),
-                        Filters.regex("titulo", ".*" + titulo + ".*", "i") // 🔍 Coincidencia parcial, insensible a mayúsculas
+                        Filters.regex("titulo", ".*" + titulo + ".*", "i")
                 )
         ).iterator();
 
@@ -161,7 +166,8 @@ public class PeliculaDAO {
                     doc.getInteger("calificacion"),
                     doc.getBoolean("favorita"),
                     doc.getString("imagen"),
-                    doc.getString("comentario")
+                    doc.getString("comentario"),
+                    doc.getString("genero")
             ));
         }
 

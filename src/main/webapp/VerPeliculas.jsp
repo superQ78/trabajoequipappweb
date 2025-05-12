@@ -1,6 +1,7 @@
 <%@ page session="true" %>
 <%@ page import="java.util.List, DTO.PeliculaDTO" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
     Object peliculasObj = request.getAttribute("listaPeliculas");
@@ -17,7 +18,7 @@
         listaPeliculas = new ArrayList<>();
     }
 
-    System.out.println("VerPeliculas.jsp - PelÌculas recibidas correctamente: " + listaPeliculas.size());
+    System.out.println("VerPeliculas.jsp - Pel√≠culas recibidas correctamente: " + listaPeliculas.size());
 %>
 
 <html>
@@ -27,14 +28,14 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <title>Mis PelÌculas</title>
+        <title>Mis Pel√≠culas</title>
         <link rel="stylesheet" href="estiloVerPelicula.css">
-        <title>Mis PelÌculas</title>
+        <title>Mis Pel√≠culas</title>
     </head>
     <body>
-        <h1>Mis PelÌculas</h1>
+        <h1>Mis Pel√≠culas</h1>
 
-        <button onclick="window.history.back()" class="btn-atras">Atr·s</button>
+        <button onclick="window.history.back()" class="btn-atras">Atr√°s</button>
 
         <button onclick="window.location.href = 'FavoritosServlet'" class="btn-favoritos-link">
             <i class="fas fa-heart"></i> Ir a Favoritos
@@ -42,7 +43,7 @@
 
         <div class="peliculas-container">
             <% if (listaPeliculas.isEmpty()) { %>
-            <p>No tienes pelÌculas registradas a˙n.</p>
+            <p>No tienes pel√≠culas registradas a√∫n.</p>
             <% } else { %>
             <% for (PeliculaDTO pelicula : listaPeliculas) {%>
             <div class="pelicula">
@@ -53,7 +54,8 @@
                 <h2><%= pelicula.getTitulo()%></h2>
                 <p><%= pelicula.getDescripcion()%></p>
                 <p><%= pelicula.getComentario()%></p>
-                <p>CalificaciÛn: <%= pelicula.getCalificacion()%>/5</p>
+                <p><%= pelicula.getGenero()%></p>
+                <p>Calificaci√≥n: <%= pelicula.getCalificacion()%>/5</p>
 
                 <form action="AgregarFavoritoServlet" method="post">
                     <input type="hidden" name="peliculaId" value="<%= pelicula.getId()%>">
@@ -61,6 +63,12 @@
                         <i class="fas fa-heart"></i> Agregar a Favoritos
                     </button>
                 </form>
+                <form action="EliminarPeliculaServlet" method="post" onsubmit="return confirm('¬øSeguro que quieres eliminar esta pel√≠cula?');">
+                    <input type="hidden" name="peliculaId" value="<%= pelicula.getId()%>">
+                    <button type="submit" class="btn-eliminar">üóëÔ∏è Eliminar</button>
+                </form>
+                </form>
+
             </div>
             <% } %>
             <% }%>

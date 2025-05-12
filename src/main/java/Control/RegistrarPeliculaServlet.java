@@ -23,69 +23,73 @@ import org.bson.types.ObjectId;
  * @author cesar
  */
 @WebServlet("/RegistrarPeliculaServlet")
-@MultipartConfig(maxFileSize = 1024 * 1024 * 5) // Permite archivos de hasta 5MB
+@MultipartConfig(maxFileSize = 1024 * 1024 * 5) // 🔹 Permite archivos de hasta 5MB
 public class RegistrarPeliculaServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String usuarioId = (String) session.getAttribute("usuarioId"); // ✅ Ahora es String
-
-// 🔹 Debug en consola para verificar si se recupera correctamente
-        System.out.println("Registro de película - Usuario ID en sesión: " + usuarioId);
+        String usuarioId = (String) session.getAttribute("usuarioId");
 
         if (usuarioId == null || usuarioId.isEmpty()) {
-            System.out.println("Error: No hay usuario en sesión. Redirigiendo a login.");
+            System.out.println("⚠ Error: No hay usuario en sesión. Redirigiendo a login.");
             response.sendRedirect("login.jsp");
             return;
         }
 
-        // Capturar datos desde el formulario con validaciones
+        // 🔹 Capturar datos desde el formulario
         String titulo = request.getParameter("titulo");
         String descripcion = request.getParameter("descripcion");
         String calificacionStr = request.getParameter("calificacion");
         String comentario = request.getParameter("comentario");
+        String genero = request.getParameter("genero");
         boolean favorita = request.getParameter("favorita") != null;
 
-        // Validar la calificación para evitar errores
+        // 🔹 Validar calificación
         int calificacion = 0;
-        if (calificacionStr != null && !calificacionStr.isEmpty()) {
-            try {
-                calificacion = Integer.parseInt(calificacionStr);
-                if (calificacion < 1 || calificacion > 5) {
-                    calificacion = 0; // Evitar valores fuera del rango permitido
-                }
-            } catch (NumberFormatException e) {
-                calificacion = 0;
+        try {
+            calificacion = Integer.parseInt(calificacionStr);
+            if (calificacion < 1 || calificacion > 5) {
+                calificacion = 0; // Evitar valores fuera del rango permitido
             }
+        } catch (NumberFormatException e) {
+            calificacion = 0;
         }
 
-        // Obtener ruta de almacenamiento dinámica
-        String uploadPath = getServletContext().getRealPath("/") + "uploads";
+        // 🔹 Obtener ruta absoluta de almacenamiento
+        String uploadPath = "C:/ruta_a_tu_directorio_de_imagenes/"; 
+
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
             uploadDir.mkdirs(); // ✅ Si no existe, crear la carpeta automáticamente
         }
 
-// Procesar subida de imagen
+        // 🔹 Procesar subida de imagen
         Part filePart = request.getPart("imagen");
         String fileName = filePart.getSubmittedFileName();
         String filePath = uploadPath + File.separator + fileName;
 
-// Guardar el archivo en el servidor
-        filePart.write(filePath);
+        // 🔹 Guardar el archivo solo si hay imagen
+        String imagePath = null;
+        if (fileName != null && !fileName.isEmpty()) {
+            filePart.write(filePath);
+            imagePath = "uploads/" + fileName; // ✅ Guardamos la ruta relativa
+            System.out.println("✅ Imagen guardada en: " + filePath);
+        } else {
+            System.out.println("⚠ No se recibió ninguna imagen.");
+        }
 
-        // Validar que los datos esenciales no sean nulos
+        // 🔹 Validar datos esenciales
         if (titulo == null || titulo.isEmpty() || descripcion == null || descripcion.isEmpty()) {
             request.setAttribute("errorMensaje", "Título y descripción son obligatorios.");
-            request.getRequestDispatcher("ResgitrarPelicula.jsp").forward(request, response);
+            request.getRequestDispatcher("RegistrarPelicula.jsp").forward(request, response);
             return;
         }
-        String imagePath = null;
 
-        // Crear DTO y guardar en BD
-        PeliculaDTO pelicula = new PeliculaDTO(new ObjectId(), usuarioId, titulo, descripcion, calificacion, favorita, imagePath, comentario);
+        // 🔹 Crear DTO y guardar en BD
+        PeliculaDTO pelicula = new PeliculaDTO(new ObjectId(), usuarioId, titulo, descripcion, calificacion, favorita, imagePath, comentario, genero);
         PeliculaDAO.agregar(pelicula);
 
-        response.sendRedirect("VerPeliculasServlet"); // Redirigir a la lista de películas
+        System.out.println("✅ Película registrada correctamente en BD.");
+        response.sendRedirect("VerPeliculasServlet"); // ✅ Redirigir después del registro
     }
 }

@@ -22,6 +22,7 @@
             <div class="pelicula">
                 <h2><%= pelicula.getTitulo()%></h2>
                 <p><%= pelicula.getDescripcion()%></p>
+                <p><%= pelicula.getGenero()%></p>
                 <p>Calificación: <%= pelicula.getCalificacion()%>/5</p>
                 <% if (pelicula.getImagen() != null && !pelicula.getImagen().isEmpty()) {%>
                 <img src="<%= pelicula.getImagen()%>" alt="Portada de la película">
