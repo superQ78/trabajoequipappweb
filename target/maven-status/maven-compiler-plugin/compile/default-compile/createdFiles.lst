@@ -15,6 +15,7 @@ DAO\UsuariosDAO.class
 Control\UsuarioServlet.class
 Control\VerPeliculasServlet.class
 Control\InicioPeliculaServlet.class
+Control\ToggleFavoritoServlet.class
 Control\RegistrarPeliculaServlet.class
 com\mycompany\proyectofinal\JakartaRestConfiguration.class
 Control\LoginServlet.class

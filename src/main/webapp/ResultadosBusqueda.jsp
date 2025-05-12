@@ -14,25 +14,33 @@
 
         <h1>Resultados de la búsqueda: "<%= request.getAttribute("busqueda")%>"</h1>
 
-        <%
-            List<PeliculaDTO> peliculas = (List<PeliculaDTO>) request.getAttribute("peliculas");
-            if (peliculas != null && !peliculas.isEmpty()) {
-                for (PeliculaDTO p : peliculas) {
-        %>
-        <div class="pelicula-item">
-            <h2><%= p.getTitulo()%></h2>
-            <p>Imagen <%= p.getImagen()%></p>
-            <p>Descripcion <%= p.getDescripcion()%></p>
-            <p>Genero <%= p.getGenero()%></p>
+        <div class="resultados-container">
+            <%
+                List<PeliculaDTO> peliculas = (List<PeliculaDTO>) request.getAttribute("peliculas");
+                if (peliculas != null && !peliculas.isEmpty()) {
+                    for (PeliculaDTO p : peliculas) {
+            %>
+            <div class="pelicula-card" onclick="window.location.href = 'VerPeliculaServlet?id=<%= p.getId()%>'">
+                <% if (p.getImagen() != null && !p.getImagen().isEmpty()) {%>
+                <img src="<%= p.getImagen()%>" alt="Portada de <%= p.getTitulo()%>">
+                <% } else { %>
+                <div class="sin-imagen">Sin imagen</div>
+                <% }%>
+                <div class="info-pelicula">
+                    <h2><%= p.getTitulo()%></h2>
+                    <p>Descripción: <%= p.getDescripcion().substring(0, Math.min(p.getDescripcion().length(), 100))%>...</p>
+                    <p>Género: <%= p.getGenero()%></p>
+                </div>
+            </div>
+            <%
+                }
+            } else {
+            %>
+            <p class="no-resultados">No se encontraron películas con ese título.</p>
+            <%
+                }
+            %>
         </div>
-        <%
-            }
-        } else {
-        %>
-        <p>No se encontraron películas con ese título.</p>
-        <%
-            }
-        %>
 
         <a href="InicioPelicula.jsp" class="btn">Volver al inicio</a>
 

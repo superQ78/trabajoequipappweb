@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page session="true" %>
 <%
@@ -18,7 +19,7 @@
     </head>
     <body>
         <header class="header">
-            <h1>Bienvenido, <%= nombreUsuario%>!</h1>
+            <h1>Bienvenido a tu filmoteca <%= nombreUsuario%>!</h1>
         </header>
 
         <nav class="nav-bar">
@@ -40,8 +41,8 @@
                 </li>
                 <li style="margin-left: auto;">
                     <a class="nav-link" href="LogoutServlet" onclick="return confirmarCierreSesion()">
-                    Cerrar Sesión
-                </a>
+                        Cerrar Sesión
+                    </a>
                 </li>
             </ul>
         </nav>
@@ -56,22 +57,86 @@
         </div>
 
         <main class="content">
-            <!-- Ejemplo: Tarjeta de película -->
-            <section class="pelicula-card">
-                <img src="ruta_a_imagen.jpg" alt="Portada de la película">
-                <div class="detalles">
-                    <h2>Título de la Película</h2>
-                    <p>Descripción breve o datos de interés.</p>
-                </div>
-            </section>
+            <div class="carousel-container">
+                <c:if test="${not empty listaPeliculas}">
+                    <c:forEach var="pelicula" items="${listaPeliculas}" varStatus="loop">
+                        <div class="carousel-slide" style="display: ${loop.index == 0 ? 'block' : 'none'}">
+                            <c:if test="${not empty pelicula.imagen}">
+                                <img src="${pelicula.imagen}" alt="${pelicula.titulo}">
+                            </c:if>
+                            <div class="pelicula-info">
+                                <h3>${pelicula.titulo}</h3>
+                                <p>${pelicula.descripcion}</p>
+                            </div>
+                        </div>
+                    </c:forEach>
+                    <button class="carousel-prev" onclick="changeSlide(-1)">&#10094;</button>
+                    <button class="carousel-next" onclick="changeSlide(1)">&#10095;</button>
+                    <div style="text-align:center">
+                        <c:forEach var="pelicula" items="${listaPeliculas}" varStatus="loop">
+                            <span class="dot" onclick="currentSlide(${loop.index})"></span>
+                        </c:forEach>
+                    </div>
+                </c:if>
+                <c:if test="${empty listaPeliculas}">
+                    <p>No hay películas para mostrar en el carrusel.</p>
+                </c:if>
+            </div>
         </main>
 
         <script>
-            
-             function confirmarCierreSesion() {
-            return confirm('¿Estás seguro de que deseas cerrar sesión?');
-        }
-            
+            let slideIndex = 0;
+            let slides = document.querySelectorAll('.carousel-slide');
+            let dots = document.querySelectorAll('.dot');
+            let totalSlides = slides.length;
+
+            function showSlide(n) {
+                let i;
+                if (n >= totalSlides) {
+                    slideIndex = 0
+                }
+                if (n < 0) {
+                    slideIndex = totalSlides - 1
+                }
+                for (i = 0; i < totalSlides; i++) {
+                    slides[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                if (totalSlides > 0) {
+                    slides[slideIndex].style.display = "block";
+                    if (dots.length > 0) {
+                        dots[slideIndex].className += " active";
+                    }
+                }
+            }
+
+            function changeSlide(n) {
+                showSlide(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+                showSlide(slideIndex = n);
+            }
+
+            // Mostrar la primera película al cargar la página si hay películas
+            if (totalSlides > 0) {
+                showSlide(slideIndex);
+
+                // Opcional: Autoplay del carrusel
+                setInterval(() => {
+                    changeSlide(1);
+                }, 3000); // Cambia de slide cada 3 segundos
+            }
+        </script>
+
+        <script>
+
+            function confirmarCierreSesion() {
+                return confirm('¿Estás seguro de que deseas cerrar sesión?');
+            }
+
             /* Al buscar las películas, deben de ir apareciendo */
             function buscarPeliculas() {
                 const input = document.getElementById('searchInput').value;

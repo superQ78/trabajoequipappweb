@@ -36,8 +36,10 @@ public class FavoritosServlet extends HttpServlet {
 
         System.out.println("Número de películas favoritas recuperadas: " + (favoritas != null ? favoritas.size() : "null"));
 
-        if (favoritas == null) {
-            favoritas = new ArrayList<>();
+        if (favoritas != null) {
+            for (PeliculaDTO pelicula : favoritas) {
+                System.out.println("🔍 Imagen recuperada para " + pelicula.getTitulo() + ": " + pelicula.getImagen());
+            }
         }
 
         request.setAttribute("listaFavoritas", favoritas);
