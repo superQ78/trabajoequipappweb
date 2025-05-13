@@ -20,7 +20,7 @@
                 if (peliculas != null && !peliculas.isEmpty()) {
                     for (PeliculaDTO p : peliculas) {
             %>
-            <div class="pelicula-card" onclick="window.location.href = 'VerPeliculaServlet?id=<%= p.getId()%>'">
+            <div class="pelicula-card" onclick="window.location.href = 'VerDetallesPeliculaServlet?id=<%= p.getId()%>'">
                 <% if (p.getImagen() != null && !p.getImagen().isEmpty()) {%>
                 <img src="<%= p.getImagen()%>" alt="Portada de <%= p.getTitulo()%>">
                 <% } else { %>

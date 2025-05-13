@@ -13,6 +13,7 @@ Control\MarcarFavoritaServlet.class
 Control\LogoutServlet.class
 DAO\UsuariosDAO.class
 Control\UsuarioServlet.class
+Control\VerDetallesPeliculaServlet.class
 Control\VerPeliculasServlet.class
 Control\InicioPeliculaServlet.class
 Control\ToggleFavoritoServlet.class

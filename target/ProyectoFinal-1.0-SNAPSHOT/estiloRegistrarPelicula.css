@@ -1,106 +1,130 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : 11 may 2025, 15:39:21
-    Author     : equipo
-*/
-/* Fuente moderna */
+/* estiloRegistrarPelicula.css */
 body {
     font-family: 'Poppins', sans-serif;
-    background: #031639;
-    color: #fff;
+    background-color: #031639;
+    color: #e0e0e0;
     margin: 0;
-    padding: 0;
-}
-
-/* Contenedor principal centrado */
-.registro-container {
-    max-width: 700px;
-    margin: 50px auto;
     padding: 20px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-/* Título con estilo cinematográfico */
-.titulo {
-    font-size: 2.2rem;
-    margin-bottom: 30px;
-    color: #00bcd4;
-}
-
-/* Card de formulario */
-.card-form {
-    background-color: #222;
+.registro-container {
+    background-color: #031d4b;
+    border-radius: 10px;
+    overflow: auto; /* Añadido para evitar desbordamiento en pantallas pequeñas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    max-width: 600px;
+    width: 90%;
 }
 
-/* Estilos del formulario */
-.formulario .form-group {
-    margin-bottom: 20px;
+.registro-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.registro-header h1 {
+    color: #ffffff;
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.registro-form-card {
+    padding: 20px;
+}
+
+.registro-form .form-group {
+    margin-bottom: 25px; /* Aumentado el espaciado entre los grupos de formulario */
     text-align: left;
 }
 
-.formulario label {
+.registro-form label {
     display: block;
-    font-weight: 600;
-    margin-bottom: 6px;
-    color: #ccc;
+    color: #bdbdbd;
+    margin-bottom: 8px; /* Aumentado el espaciado debajo de las etiquetas */
+    font-size: 1em;
+    font-weight: bold;
 }
 
-.formulario input[type="text"],
-.formulario input[type="file"],
-.formulario select,
-.formulario textarea {
-    width: 100%;
-    padding: 10px;
-    background-color: #111;
-    color: #fff;
-    border: 1px solid #444;
-    border-radius: 8px;
-    font-size: 1rem;
+.registro-form input[type="text"],
+.registro-form input[type="file"],
+.registro-form select,
+.registro-form textarea {
+    width: calc(100% - 20px); /* Ajuste para el padding */
+    padding: 12px; /* Aumentado el padding dentro de los campos */
+    background-color: #0a244d; /* Un tono más claro para mejor contraste */
+    color: #e0e0e0;
+    border: 1px solid #777; /* Borde más visible */
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
 }
 
-.formulario textarea {
+.registro-form input[type="file"] {
+    padding-top: 8px; /* Ajuste para la alineación vertical del texto "Elegir archivo" */
+}
+
+.registro-form select {
+    appearance: none; /* Elimina la apariencia por defecto del select */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="#e0e0e0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    padding-right: 30px; /* Espacio para la flecha del select */
+}
+
+.registro-form textarea {
     resize: vertical;
-}
-
-/* Botones */
-.btn {
-    display: inline-block;
-    padding: 10px 18px;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.btn:hover {
-    transform: scale(1.03);
+    min-height: 80px; /* Altura mínima para la descripción */
 }
 
 .btn-registrar {
-    background-color: #00bcd4;
+    background-color: #B81333;
     color: white;
-    margin-top: 15px;
+    padding: 12px 24px; /* Aumentado el padding del botón */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 30px; /* Aumentado el margen superior del botón */
+}
+
+.btn-registrar:hover {
+    background-color: #870d25;
+}
+
+.registro-actions {
+    text-align: center;
+    margin-top: 30px;
 }
 
 .btn-volver {
-    background-color: transparent;
-    border: 2px solid #00bcd4;
-    color: #00bcd4;
-    margin-top: 20px;
     display: inline-block;
+    padding: 10px 20px; /* Aumentado el padding del botón volver */
+    color: #e0e0e0;
+    text-decoration: none;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 15px; /* Añadido margen superior */
 }
 
 .btn-volver:hover {
-    background-color: #00bcd4;
-    color: white;
+    background-color: #e0e0e0;
+    color: #031639;
 }
 
-
+.mensaje-error {
+    color: #ff4d4d;
+    background-color: #ffe0e0;
+    border: 1px solid #ffaaaa;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+}

@@ -40,7 +40,7 @@
         <div class="content">
             <% if (peliculasFavoritas != null && !peliculasFavoritas.isEmpty()) { %>
             <% for (PeliculaDTO pelicula : peliculasFavoritas) {%>
-            <div class="pelicula-card" onclick="window.location.href = 'VerPeliculaServlet?id=<%= pelicula.getId()%>'">
+            <div class="pelicula-card" onclick="window.location.href = 'VerDetallesPeliculaServlet?id=<%= pelicula.getId()%>'">
                 <%
                     String imagenUrl = pelicula.getImagen();
                     if (imagenUrl != null && !imagenUrl.isEmpty()) {

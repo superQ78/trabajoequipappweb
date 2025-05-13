@@ -4,6 +4,7 @@ C:\Users\cesar\Documents\GitHub\trabajoequipappweb\src\main\java\DTO\PeliculaDTO
 C:\Users\cesar\Documents\GitHub\trabajoequipappweb\src\main\java\DAO\PeliculaDAO.java
 C:\Users\cesar\Documents\GitHub\trabajoequipappweb\src\main\java\Control\AgregarFavoritosServlet.java
 C:\Users\cesar\Documents\GitHub\trabajoequipappweb\src\main\java\Control\UsuarioServlet.java
+C:\Users\cesar\Documents\GitHub\trabajoequipappweb\src\main\java\Control\VerDetallesPeliculaServlet.java
 C:\Users\cesar\Documents\GitHub\trabajoequipappweb\src\main\java\Control\RegistrarPeliculaServlet.java
 C:\Users\cesar\Documents\GitHub\trabajoequipappweb\src\main\java\Negocio\PeliculaBO.java
 C:\Users\cesar\Documents\GitHub\trabajoequipappweb\src\main\java\Negocio\UsuarioBO.java
