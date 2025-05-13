@@ -5,15 +5,44 @@
 */
 /* Estilos generales del body (cuerpo de la página) */
 body {
-    background-color: #ffffff; /* Fondo oscuro, consistente con el login */
-    font-family: 'Poppins', sans-serif; /* Usando la misma fuente que otras páginas */
-    color: #e0e0e0; /* Texto claro para mejor contraste en el fondo oscuro */
+    font-family: 'Poppins', sans-serif;
     margin: 0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra el contenido horizontalmente */
-    min-height: 100vh;
+    padding: 0;
+    background-color: #031639; /* Fallback background color */
+    background-image: url('Images/collage 1.jpg'); /* Use your collage image */
+    background-size: cover; /* Adjust to cover the entire background */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-attachment: fixed; /* Optional: Keep the background fixed during scroll */
+    color: #e0e0e0; /* Adjust text color for readability against the background */
+}
+
+/* ... other styles for your page ... */
+
+.header-bar .btn-outline-light {
+    background-color: #7C0054; /* Fondo morado oscuro */
+    color: white; /* Letras blancas */
+    border: 2px solid white; /* Borde blanco */
+    padding: 0.8rem 1.5rem; /* Aumenta el padding para mejor visibilidad */
+    border-radius: 10px; /* Bordes redondeados */
+    font-weight: bold; /* Texto en negrita */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra para destacar */
+}
+
+.header-bar .btn-outline-light:hover {
+    background-color: #bb86fc; /* Un tono de morado más claro al pasar el ratón */
+    color: #031639; /* Texto oscuro al pasar el ratón */
+    border-color: #031639;
+}
+
+h1 {
+    color: white; /* Letras blancas para el título */
+    background-color: rgba(124, 0, 84, 0.7); /* Fondo morado oscuro con transparencia */
+    padding: 1rem; /* Espacio alrededor del título */
+    border-radius: 10px; /* Bordes redondeados */
+    border: 2px solid white; /* Borde blanco */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra para destacar */
+    display: inline-block; /* Para que el fondo se ajuste al contenido */
+    margin-bottom: 30px; /* Mantén el margen inferior */
 }
 
 .container {

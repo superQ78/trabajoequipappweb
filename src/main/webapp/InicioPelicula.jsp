@@ -62,10 +62,10 @@
                     <c:forEach var="pelicula" items="${listaPeliculas}" varStatus="loop">
                         <div class="carousel-slide" style="display: ${loop.index == 0 ? 'block' : 'none'}">
                             <c:if test="${not empty pelicula.imagen}">
-                                <img src="${pelicula.imagen}" alt="${pelicula.titulo}">
+                                <img src="${pelicula.imagen}" alt="${pelicula.titulo}" onclick="window.location.href = 'VerDetallesPeliculaServlet?id=${pelicula.id}'" style="cursor: pointer;">
                             </c:if>
                             <div class="pelicula-info">
-                                <h3>${pelicula.titulo}</h3>
+                                <h3 onclick="window.location.href = 'VerDetallesPeliculaServlet?id=${pelicula.id}'" style="cursor: pointer;">${pelicula.titulo}</h3>
                                 <p>${pelicula.descripcion}</p>
                             </div>
                         </div>
@@ -162,7 +162,7 @@
                                 } else {
                                     const noSuggestions = document.createElement('div');
                                     noSuggestions.classList.add('no-suggestions');
-                                    noSuggestions.textContent = 'No se encontraron sugerencias.';
+
                                     suggestionsContainer.appendChild(noSuggestions);
                                 }
                             })

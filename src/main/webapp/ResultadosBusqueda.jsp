@@ -42,7 +42,5 @@
             %>
         </div>
 
-        <a href="InicioPelicula.jsp" class="btn">Volver al inicio</a>
-
     </body>
 </html>
